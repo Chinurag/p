@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chinurag - Under Construction</title>
+  <title>Your Name - Profile</title>
   <style>
     body {
-      background-color: #000;
-      color: #fff;
+      background-color: #f5f5f5;
       font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
+      padding: 0;
+      color: #fff;
     }
-
-    .container {
+    #content {
+      margin-top: 100px;
+    }
+    #content .images-container {
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+    }
+    #content .images-container img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+    #content .cartoon-image1 {
+      transform: rotate(-5deg);
+      opacity: 0.6;
+    }
+    #content .cartoon-image2 {
+      transform: rotate(5deg);
+      opacity: 0.6;
     }
 
-    .box {
-      background-color: #333;
-      border-radius: 10px;
+    #content .text-container {
+      background-color: #444;
       padding: 20px;
-      animation: fade-in 1s ease-out;
     }
-
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+    #content h1 {
+      margin-top: 20px;
+      font-size: 28px;
     }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .construction {
-      font-size: 24px;
-    }
-
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+    #content p {
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="box">
-      <h1>Chinurag</h1>
-      <p class="construction">Profile under construction</p>
+  <div id="content">
+    <div class="images-container">
+      <img src="cartoon_character.png" alt="Cartoon Character 1" class="cartoon-image1">
+      <img src="real_face.png" alt="Your Face">
+      <img src="cartoon_character.png" alt="Cartoon Character 2" class="cartoon-image2">
+    </div>
+    <img src="dance.gif" alt="Dance GIF">
+    <div class="text-container">
+      <h1>its CHINURAG</h1>
+      <p>
+       Waiting for Alien
+      </p>
     </div>
   </div>
 </body>
