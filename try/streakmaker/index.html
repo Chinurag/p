@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Streak Maker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Streak Maker</h1>
+    <div id="streakCount">Streak: 0</div>
+    <button onclick="completeTask()">Complete Task</button>
+    <div id="reward"></div>
+
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p class="congrats">Congratulations!</p>
+            <p>You've earned a reward!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

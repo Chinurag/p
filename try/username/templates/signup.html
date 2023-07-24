@@ -1,0 +1,36 @@
+<!-- templates/signup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <div class="container">
+        <form method="post" action="/signup">
+            <div class="input-container">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-container">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter Instagram Username" onfocus="handleUsernameFocus(this)" onblur="handleUsernameBlur(this)" required>
+            </div>
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" value="Sign Up">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
