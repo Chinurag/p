@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Shop - Character Details</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Character Shop</h1>
+  </header>
+
+  <div class="character-container">
+    <div class="character-part" id="head">
+      <img src="locked-head.png" alt="Locked Head" id="head-image">
+    </div>
+    <!-- Add other character parts here with corresponding IDs -->
+  </div>
+
+  <div class="ad-container">
+    <div class="timer">30</div>
+    <button id="watch-ad-btn">Watch Ad</button>
+  </div>
+
+<!-- New button for downloading the character file -->
+<div class="download-container" style="display: none;">
+  <a id="download-btn" download="character.zip" href="#" onclick="downloadCharacter()">Download Character</a>
+</div>
+
+  <script src="script.js"></script>
+  <script>
+    // JavaScript code to handle unlocking character parts and enabling the download button
+
+    // List of character parts to unlock
+    const characterParts = ["head", /* Add other parts here */];
+    let unlockedParts = 0;
+
+    // Function to unlock a character part
+    function unlockPart(partId) {
+      const partImage = document.getElementById(partId + "-image");
+      partImage.src = "unlocked-" + partId + ".png";
+      unlockedParts++;
+
+      // Check if all parts are unlocked
+      if (unlockedParts === characterParts.length) {
+        const downloadContainer = document.querySelector(".download-container");
+        downloadContainer.style.display = "block";
+      }
+    }
+
+    // Function to handle the ad watch button click
+    function watchAd() {
+      // Disable the button to prevent multiple clicks during the ad watch
+      const watchAdBtn = document.getElementById("watch-ad-btn");
+      watchAdBtn.disabled = true;
+
+      // Set the ad duration (30 seconds in this case)
+      let adDuration = 30;
+
+      // Display the countdown timer
+      const timer = document.querySelector(".timer");
+      timer.style.display = "block";
+
+      // Update the countdown timer every second
+      const countdownInterval = setInterval(() => {
+        adDuration--;
+        timer.textContent = adDuration;
+
+        // If the ad is finished, unlock all character parts and reset the UI
+        if (adDuration <= 0) {
+          characterParts.forEach(part => unlockPart(part));
+          timer.style.display = "none";
+          watchAdBtn.disabled = false;
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
+    }
+
+    // Event listener for the watch ad button
+    document.getElementById("watch-ad-btn").addEventListener("click", watchAd);
+
+    // Event listener for the download button
+    document.getElementById("download-btn").addEventListener("click", () => {
+      // Implement the code to generate and download the character file here
+      // You can create a data URL for the character image and trigger a download using JavaScript
+      alert("Downloading character file...");
+    });
+
+
+
+
+
+
+
+
+
+  // Function to handle the download button click
+  function downloadCharacter() {
+    // Create a ZIP file with all the unlocked character part images
+    const zip = new JSZip();
+    characterParts.forEach(part => {
+      // Add the unlocked part images to the ZIP file
+      const unlockedPartImage = document.getElementById(`unlocked-${part}-image`);
+      const blob = dataURLtoBlob(unlockedPartImage.src);
+      zip.file(`${part}.png`, blob);
+    });
+
+    // Generate the ZIP file and download it
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+      const downloadLink = document.getElementById("download-btn");
+      const fileURL = URL.createObjectURL(content);
+      downloadLink.href = fileURL;
+    });
+  }
+
+  // Function to convert data URL to Blob
+  function dataURLtoBlob(dataURL) {
+    const arr = dataURL.split(",");
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  }
+
+  // ... Your existing JavaScript code ...
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

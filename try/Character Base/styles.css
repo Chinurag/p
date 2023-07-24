@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.character-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.character-part {
+  margin: 0 10px;
+}
+
+.ad-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.timer {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#watch-ad-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
