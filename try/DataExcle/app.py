@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import mysql.connector
-conn = mysql.connector.connect (host='localhost', password='hesoyam21', user='root')
+conn = mysql.connector.connect (host='localhost', password='***', user='root')
 
 
 
